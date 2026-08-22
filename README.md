@@ -40,6 +40,7 @@ Unityにおける実験関連のメソッド、ツールを扱います。
 ## Questionnaire
 ディスプレイ上やVR空間でアンケートに回答するためのツールです。
 リッカート尺度とVisual Analog Scaleを用意しています。
+別リポジトリで公開している「[VR-Questionnaire](https://github.com/TakayoshiHagiwara/VR-Questionnaire)」を改良したものです。
 
 **日本語への対応はしていません。日本語のアンケート項目を作成する場合は、TextMeshProに日本語のFont Assetを追加してください。**
 
