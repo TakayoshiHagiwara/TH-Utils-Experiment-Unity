@@ -1,0 +1,21 @@
+{
+  "name": "com.takayoshihagiwara.th-utils-experiment",
+  "version": "1.0.0",
+  "displayName": "TH-Utils-Experiment",
+  "description": "This is utilities for experiment in Unity",
+  "unity": "2021.3",
+  "unityRelease": "15f1",
+  "keywords": [
+    "experiment"
+  ],
+  "author": {
+    "name": "Takayoshi Hagiwara"
+  },
+  "samples": [
+    {
+      "displayName": "Questionnaire samples",
+      "description": "This is a sample of a standard questionnaire.",
+      "path": "Samples~/Questionnaire"
+    }
+  ]
+}
