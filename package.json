@@ -1,6 +1,6 @@
 {
   "name": "com.takayoshihagiwara.th-utils-experiment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "TH-Utils-Experiment",
   "description": "This is utilities for experiment in Unity",
   "unity": "2021.3",

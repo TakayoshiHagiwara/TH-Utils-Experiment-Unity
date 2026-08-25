@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TH.Utils.Experiment
 {
@@ -22,6 +23,13 @@ namespace TH.Utils.Experiment
         private string _outputDirectory = "";
 
         [SerializeField] private string _fileName = DefaultFileName;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent _onSaveCompleted;
+        [SerializeField] private UnityEvent _onSaveFailed;
+
+        public UnityEvent OnSaveCompleted => _onSaveCompleted;
+        public UnityEvent OnSaveFailed => _onSaveFailed;
 
         public string LastSavedPath { get; private set; }
 
@@ -78,13 +86,23 @@ namespace TH.Utils.Experiment
 
                 File.WriteAllText(filePath, builder.ToString(), Utf8WithBom);
 
+                if (!File.Exists(filePath))
+                {
+                    Debug.LogError($"CSV file was not found after saving: {filePath}");
+                    _onSaveFailed?.Invoke();
+                    return false;
+                }
+
                 LastSavedPath = filePath;
+
                 Debug.Log($"Questionnaire data saved: {filePath}");
+                _onSaveCompleted?.Invoke();
                 return true;
             }
             catch (Exception exception)
             {
                 Debug.LogError($"Failed to save questionnaire data: {exception.Message}");
+                _onSaveFailed?.Invoke();
                 return false;
             }
         }
