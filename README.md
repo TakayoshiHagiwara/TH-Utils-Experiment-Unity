@@ -86,6 +86,8 @@ Unityにおける実験関連のメソッド、ツールを扱います。
 - 基本的にQuestionnaireRoot直下にLikertScaleQuestionnaireかVisualAnalogScaleQuestionnaireのprefabを配置するだけです
 - prefabの個数を変更すれば、アンケート個数を変更できます
 - prefabを配置し、上記のパラメータを任意で調整すれば、そのほかは実行時に自動で調整されます
+- QuestionnaireManagerには全アンケート終了時のイベントを任意で追加できます
+- QuestionnaireCsvExporterにはCSV出力成功/失敗時のイベントを任意で追加できます
 
 
 # Description

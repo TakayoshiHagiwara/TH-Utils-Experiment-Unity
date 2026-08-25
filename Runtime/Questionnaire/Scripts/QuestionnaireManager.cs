@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TH.Utils.Experiment
 {
@@ -13,11 +14,13 @@ namespace TH.Utils.Experiment
         [SerializeField] private ControllerInputManager _controllerInputManager;
         [SerializeField] private AnimationManager _animationManager;
         [SerializeField] private QuestionnaireCsvExporter _csvExporter;
-
         [SerializeField] private Transform _questionnaireRoot;
 
         [SerializeField, Tooltip("Randomizes questionnaire presentation order when enabled.")]
         private bool _isRandomizeOrder;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent _onQuestionnaireCompleted;
 
         private QuestionnaireView[] _questionnaires;
         private int[] _questionnaireOrder;
@@ -28,6 +31,7 @@ namespace TH.Utils.Experiment
 
         public int CurrentQuestionnaireNum => _currentQuestionnaireNum;
         public int[] QuestionnaireOrder => _questionnaireOrder;
+        public UnityEvent OnQuestionnaireCompleted => _onQuestionnaireCompleted;
 
         /// <summary>
         /// Initializes all questionnaires.
@@ -118,6 +122,8 @@ namespace TH.Utils.Experiment
 
             _currentQuestionnaire.CanvasGroup.interactable = false;
             _currentQuestionnaire.CanvasGroup.blocksRaycasts = false;
+
+            _onQuestionnaireCompleted?.Invoke();
 
             _csvExporter.Save(_questionnaires, _questionnaireOrder);
         }
